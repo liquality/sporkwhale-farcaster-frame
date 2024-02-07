@@ -27,7 +27,7 @@ export default function Home() {
 
   console.log('More than one user?')
 
-  let img = moreThanOneUser ? IMAGES.question1_happy : IMAGES.question1_sad
+  let img = !moreThanOneUser ? IMAGES.question1_happy : IMAGES.question1_sad
   console.log(img, 'wats img?')
   //"http://localhost/image.jpg?" + new Date().getTime();
   return (
