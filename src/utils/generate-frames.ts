@@ -4,6 +4,7 @@ import { TPostData, TUntrustedData } from '../types'
 // generate an html page with the relevant opengraph tags
 export function generateFarcasterFrame(image: string, postData: TPostData) {
   let metaTags = ''
+  console.log(postData, 'post data????')
 
   switch (postData) {
 

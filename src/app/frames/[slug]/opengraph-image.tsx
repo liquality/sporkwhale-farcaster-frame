@@ -17,6 +17,7 @@ export const contentType = 'image/png'
 // Image generation
 export default async function Image({ params }: { params: { slug: string } }) {
   // Fon
+  console.log('Params opengraph:', params)
   console.log({ params })
   return new ImageResponse(
     (

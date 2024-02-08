@@ -28,16 +28,17 @@ export default function Home() {
   console.log('More than one user?')
 
   
-  const ogImageUrl = `${SERVER_URL}/frames/moreThanOneUser: ${moreThanOneUser}::${new Date().getTime()}/opengraph-image`;
+  //const ogImageUrl = `${SERVER_URL}/frames/moreThanOneUser: ${moreThanOneUser}::${new Date().getTime()}/opengraph-image`;
   //"http://localhost/image.jpg?" + new Date().getTime();
+  const ogImageUrl = IMAGES.whale
+  console.log(ogImageUrl, 'images whale')
   return (
     <>
       <Head>
         <meta property="og:title" content="Frame" />
-        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image" content={`${SERVER_URL}/${ogImageUrl}`} />
         <meta property="fc:frame" content="vNext" />
-        
-        <meta property="fc:frame:image" content={ogImageUrl} />
+        <meta property="fc:frame:image" content={`${SERVER_URL}/${ogImageUrl}`} />
         <meta property="fc:frame:button:1" content="START YOUR QUIZ" />
         <meta
           property="fc:frame:post_url"
