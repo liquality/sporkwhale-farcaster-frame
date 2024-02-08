@@ -18,7 +18,7 @@ export function generateFarcasterFrame(image: string, postData: TPostData) {
 		  <meta property="fc:frame:button:1" content="Go see leaderboard!" />
 		  <meta property="fc:frame:button:1:action" content="post_redirect" />`
       break
-	  case 'start':
+	  case 'question':
 		metaTags += `
 			<meta property="fc:frame:image" content="${image}" />
 			<meta property="fc:frame:input:text" content="Type your answer" />

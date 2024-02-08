@@ -27,19 +27,18 @@ export default function Home() {
 
   console.log('More than one user?')
 
-  let img = !moreThanOneUser ? IMAGES.question1_happy : IMAGES.question1_sad
-  console.log(img, 'wats img?')
+  
+  const ogImageUrl = `${SERVER_URL}/frames/moreThanOneUser: ${moreThanOneUser}::${new Date().getTime()}/opengraph-image`;
   //"http://localhost/image.jpg?" + new Date().getTime();
   return (
     <>
       <Head>
         <meta property="og:title" content="Frame" />
-        <meta property="og:image" content={`${SERVER_URL}/${img}?${+ new Date().getTime()}`} />
+        <meta property="og:image" content={ogImageUrl} />
         <meta property="fc:frame" content="vNext" />
         
-        <meta property="fc:frame:image" content={`${SERVER_URL}/${img}?${+ new Date().getTime()}`} />
-        <meta property="fc:frame:input:text" content="Type your answer" />
-        <meta property="fc:frame:button:1" content="Submit ✉️" />
+        <meta property="fc:frame:image" content={ogImageUrl} />
+        <meta property="fc:frame:button:1" content="START YOUR QUIZ" />
         <meta
           property="fc:frame:post_url"
           content={`${SERVER_URL}/api/post?data=start`}
@@ -52,3 +51,4 @@ export default function Home() {
     </>
   )
 }
+
