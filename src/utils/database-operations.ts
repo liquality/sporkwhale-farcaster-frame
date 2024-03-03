@@ -64,7 +64,7 @@ export async function setUserHasMinted(id: number): Promise<void> {
   UPDATE users 
   set has_minted = true 
   where id = ${id}`
-  console.log('setUserHasMinted => ', update )
+  console.log('setUserHasMinted => ', update)
 }
 
 export async function getChannel(channel: string) {
@@ -129,12 +129,12 @@ export async function checkIfAvailableForMintAndMint(
           })
         html = generateFarcasterFrame(
           `${SERVER_URL}/${channel.question_id + '_successfull_mint.png'}`,
-          'leaderboard'
+          'follow-liquality'
         )
       } else {
         html = generateFarcasterFrame(
           `${SERVER_URL}/${IMAGES.already_minted}`,
-          'leaderboard'
+          'follow-liquality'
         )
       }
     }

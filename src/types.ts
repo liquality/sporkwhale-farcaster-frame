@@ -33,6 +33,7 @@ export type TPostData =
   | 'error-be-a-follower'
   | 'start-mint'
   | 'mint'
+  | 'follow-liquality'
 
 export type TUserProfileNeynar = {
   object: 'user'

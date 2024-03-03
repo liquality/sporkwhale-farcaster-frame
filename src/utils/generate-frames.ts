@@ -36,6 +36,12 @@ export function generateFarcasterFrame(
     <meta property="fc:frame:button:2" content="🔔 Follow @liquality" />
 		<meta property="fc:frame:button:2:action" content="post_redirect" />`
       break
+    case 'follow-liquality':
+      metaTags += `
+      <meta property="fc:frame:image" content="${image}" />
+      <meta property="fc:frame:button:1" content="🔔 Thank you for participating! Follow Liquality for the next group competition" />
+      <meta property="fc:frame:button:1:action" content="post_redirect" />`
+      break
     case 'error-be-a-follower':
       metaTags += `
       <meta property="fc:frame:image" content="${image}" />

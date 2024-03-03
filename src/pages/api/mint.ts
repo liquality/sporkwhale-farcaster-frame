@@ -74,13 +74,13 @@ export default async function handler(
       } else {
         html = generateFarcasterFrame(
           `${SERVER_URL}/${IMAGES.expired}`,
-          'leaderboard'
+          'follow-liquality'
         )
       }
       break
 
-    case 'leaderboard':
-      locationHeader = 'https://leaderboard.liquality.io'
+    case 'follow-liquality':
+      locationHeader = `https://warpcast.com/liquality`
       return response.redirect(302, locationHeader)
 
     default:
