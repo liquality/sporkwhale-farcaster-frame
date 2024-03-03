@@ -8,14 +8,14 @@ export type LeaderboardProps = {
 }
 
 export default function LeaderboardDesktop(props: LeaderboardProps) {
-  const { leaderboard, currentDay} = props
+  const { leaderboard, currentDay } = props
 
   const renderDay = (
     day: number,
     from: number,
     to: number,
     color: string,
-    dayFourIndex?: number,
+    dayFourIndex?: number
   ) => {
     return (
       <>
@@ -37,14 +37,13 @@ export default function LeaderboardDesktop(props: LeaderboardProps) {
               day={day}
             />
           )}
-          {(day === 5) ?
+          {day === 5 ? (
             <div className="justify-between-grid">
-            <div className="pair">
-              <div className="channel-name-box">
-                mfres
+              <div className="pair">
+                <div className="channel-name-box">mfers</div>
               </div>
             </div>
-          </div> : null }
+          ) : null}
           <div style={{ height: 300 }}></div>
 
           <div style={{ position: 'absolute', bottom: 0 }}>
