@@ -90,8 +90,7 @@ add
 
 create index idx_questions_id_expires ON questions (id, expires_at);
 
-
 alter table
-    users
+   user_question_responses
 add
     column has_minted BOOLEAN DEFAULT false;

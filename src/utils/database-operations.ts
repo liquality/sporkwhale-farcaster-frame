@@ -59,11 +59,23 @@ export async function saveUser(ud: TUntrustedData) {
   } else return existingUser.rows[0]
 }
 
-export async function setUserHasMinted(id: number): Promise<void> {
+export async function getUserResponse(
+  userId: number,
+  channelId: number
+): Promise<any> {
+  const result =
+    await sql`SELECT * FROM user_question_responses WHERE user_id = ${userId} and channel_id = ${channelId};`
+  return result?.rows[0] || null
+}
+export async function setUserHasMinted(
+  userId: number,
+  channelId: number
+): Promise<void> {
   const update = await sql`
-  UPDATE users 
+  UPDATE user_question_responses 
   set has_minted = true 
-  where id = ${id}`
+  where user_id = ${userId}
+  and channel_id = ${channelId}`
   console.log('setUserHasMinted => ', update)
 }
 
@@ -117,11 +129,13 @@ export async function checkIfAvailableForMintAndMint(
     console.log(channel, 'got here because I have participated')
     const user = await getUserFromFid(fid)
     if (user) {
-      if (!user.has_minted) {
+      const userResponse = await getUserResponse(user.id, channel.id)
+      console.log(userResponse, 'got userResponse')
+      if (userResponse && !userResponse.has_minted) {
         mintSporkNFT(user.wallet_address, channel.question_id)
           .then((tx) => {
             console.log(tx, 'calling setUserHasMinted: ', user.id)
-            setUserHasMinted(user.id)
+            setUserHasMinted(user.id, channel.id)
           })
           .catch((error) => {
             console.error('Error:', error)
