@@ -16,7 +16,7 @@ export const IMAGES = {
   already_submitted: 'already_submitted.png',
   be_a_follower: 'be_a_follower.png',
   expired: 'expired.png',
-  not_eligable: 'be_a_follower.png',
+  not_eligable: 'not_eligable.png',
   already_minted: 'already_claimed.png',
   start_mint: 'the_winner_is.png',
 }
