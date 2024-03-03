@@ -157,7 +157,7 @@ export async function checkIfAvailableForMintAndMint(
 
     html = generateFarcasterFrame(
       `${SERVER_URL}/${IMAGES.not_eligable}`,
-      'leaderboard'
+      'follow-liquality'
     )
   }
   return html
