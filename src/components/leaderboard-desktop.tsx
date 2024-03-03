@@ -40,6 +40,8 @@ export default function LeaderboardDesktop(props: LeaderboardProps) {
           {day === 5 ? (
             <div className="justify-between-grid">
               <div className="pair">
+                <br></br>
+                <br></br>
                 <div className="channel-name-box">mfers</div>
               </div>
             </div>
