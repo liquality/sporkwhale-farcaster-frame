@@ -18,7 +18,7 @@ export const IMAGES = {
   expired: 'expired.png',
   not_eligable: 'not_eligable.png',
   already_minted: 'already_claimed.png',
-  start_mint: 'start-mint.png',
+  start_mint: 'the_winner_is.png',
 }
 
 export const levelImages: LevelImages = {

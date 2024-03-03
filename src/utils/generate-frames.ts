@@ -52,7 +52,7 @@ export function generateFarcasterFrame(
     case 'mint':
       metaTags += `
           <meta property="fc:frame:image" content="${image}" />
-          <meta property="fc:frame:button:1" content="Mint Your SporkWhale!" />
+          <meta property="fc:frame:button:1" content="🔆 Mint my Whaley NFT" />
           `
       break
   }

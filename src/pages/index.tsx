@@ -7,13 +7,12 @@ import { useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import LeaderboardMobile from '../components/leaderboard-mobile'
 export default function Home() {
-
   const [isMobileState, setIsMobileState] = useState(false)
   const [questionId, setQuestionId] = useState(5)
   const [leaderboard, setLeaderboard] = useState<null | ClashDataMap[]>(null)
   const [loading, setLoading] = useState(false)
   const [expandedDay, setExpandedDay] = useState<number | null>(null)
-  
+
   useEffect(() => {
     setIsMobileState(isMobile)
   }, [isMobile])
@@ -38,7 +37,7 @@ export default function Home() {
   if (questionId === 5) {
     image = IMAGES.start_mint
     postUrl = '/api/mint?data=start-mint'
-    text = '🔆 Mint your sporkwhale!'
+    text = '🔆 Mint my Whaley NFT'
   } else {
     image = IMAGES.welcome
     postUrl = '/api/post?data=start'
@@ -61,9 +60,15 @@ export default function Home() {
         <>
           {' '}
           {isMobileState ? (
-            <LeaderboardMobile leaderboard={leaderboard} currentDay={questionId}/>
+            <LeaderboardMobile
+              leaderboard={leaderboard}
+              currentDay={questionId}
+            />
           ) : (
-            <LeaderboardDesktop leaderboard={leaderboard} currentDay={questionId}/>
+            <LeaderboardDesktop
+              leaderboard={leaderboard}
+              currentDay={questionId}
+            />
           )}
         </>
       ) : null}
