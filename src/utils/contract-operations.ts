@@ -81,15 +81,20 @@ export async function recordParticipation(
   cWalletAddress: string,
   poolAddress: string,
   participations: PoolParticipation[]
-) {
+): Promise<PoolParticipation[]> {
+  let participantOnchain: PoolParticipation[] = []
   try {
     const provider = getProvider()
     const signer = getSigner(provider)
+    console.log('signer: ', signer.address)
 
     const cWallet = getCWallet(signer, cWalletAddress)
-    let data: string[] = []
-    let value: number[] = []
-    let dest: string[] = []
+
+    const pool = await getPool(signer, poolAddress)
+    const participantRecorded = await pool.getParticipants()
+    //All participants that are onchain
+    console.log('participantCount onchain: ', participantRecorded.length)
+    console.log('participations: ', participantRecorded)
 
     for (const participation of participations) {
       const callData = getRecordPoolMintCallData(
@@ -98,15 +103,20 @@ export async function recordParticipation(
         participation.questionId,
         participation.engagement
       )
-      data.push(callData)
-      value.push(0)
-      dest.push(cAddress)
+
+      const tx = await cWallet.execute(cAddress, 0, callData)
+      await provider.waitForTransaction(tx.hash)
+      participantOnchain.push(participation)
+      console.log('Participation recorded onchain successfully! ', tx.hash)
     }
 
-    const tx = await cWallet.executeBatch(dest, value, data)
-    await provider.waitForTransaction(tx.hash)
-    console.log('Participation recorded onchain successfully! ', tx.hash)
+    console.log('Participants added on-chain : ', participantOnchain)
+    return participantOnchain
   } catch (error) {
+    console.log(
+      'Error participants on-chain before error : ',
+      participantOnchain
+    )
     throw new Error('Error recording participation: ' + error)
   }
 }
